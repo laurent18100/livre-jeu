@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello JouerController!
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+		{% for personnage in personnages %}
+
+			<div class="col-2 m-3 p-1 ">
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" src="{{ asset('images/avatars/'~personnage.avatar.getNom()~'.png')}}">
+					<div class="card-body">
+						<a href="#" class="btn btn-primary">{{ personnage.prenom }}
+							{{ personnage.nom }}</a>
+					</div>
+				</div>
+			</div>
+
+
+		{% else %}
+			Aucun personnage trouvé
+		{% endfor %}
+	</div>
+	<a href="#">Créer</a>
+</div>
+{% endblock %}

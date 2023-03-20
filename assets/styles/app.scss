@@ -1,0 +1,24 @@
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background: url(/assets/images/fond_accueil.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100vh;
+}
+.card {
+    width: 15rem !important;
+    border: 1px solid #ccc; /* Ajouter une bordure */
+    border-radius: 5px; /* Ajouter des coins arrondis */
+    overflow: hidden; /* Masquer le contenu qui dépasse */
+  }
+  
+  .card img {
+    width: 60%; /* Réduire la largeur de l'image à 100% de la largeur de la carte */
+    height: auto; /* Ajuster la hauteur de l'image en fonction de la largeur */
+    object-fit: cover; /* Redimensionner l'image pour remplir la zone définie par les dimensions */
+    object-position: center; /* Positionner l'image au centre */
+  }

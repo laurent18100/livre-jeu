@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Avatar;
-use App\Form\Avatar1Type;
+use App\Form\AvatarType;
 use App\Repository\AvatarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +25,7 @@ class AvatarController extends AbstractController
     public function new(Request $request, AvatarRepository $avatarRepository): Response
     {
         $avatar = new Avatar();
-        $form = $this->createForm(Avatar1Type::class, $avatar);
+        $form = $this->createForm(AvatarType::class, $avatar);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +51,7 @@ class AvatarController extends AbstractController
     #[Route('/{id}/edit', name: 'app_avatar_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Avatar $avatar, AvatarRepository $avatarRepository): Response
     {
-        $form = $this->createForm(Avatar1Type::class, $avatar);
+        $form = $this->createForm(AvatarType::class, $avatar);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

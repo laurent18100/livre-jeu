@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Alternative;
-use App\Form\Alternative1Type;
+use App\Form\AlternativeType;
 use App\Repository\AlternativeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +25,7 @@ class AlternativeController extends AbstractController
     public function new(Request $request, AlternativeRepository $alternativeRepository): Response
     {
         $alternative = new Alternative();
-        $form = $this->createForm(Alternative1Type::class, $alternative);
+        $form = $this->createForm(AlternativeType::class, $alternative);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +51,7 @@ class AlternativeController extends AbstractController
     #[Route('/{id}/edit', name: 'app_alternative_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Alternative $alternative, AlternativeRepository $alternativeRepository): Response
     {
-        $form = $this->createForm(Alternative1Type::class, $alternative);
+        $form = $this->createForm(AlternativeType::class, $alternative);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

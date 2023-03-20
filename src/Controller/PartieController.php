@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Partie;
-use App\Form\Partie1Type;
+use App\Form\PartieType;
 use App\Repository\PartieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +25,7 @@ class PartieController extends AbstractController
     public function new(Request $request, PartieRepository $partieRepository): Response
     {
         $partie = new Partie();
-        $form = $this->createForm(Partie1Type::class, $partie);
+        $form = $this->createForm(PartieType::class, $partie);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +51,7 @@ class PartieController extends AbstractController
     #[Route('/{id}/edit', name: 'app_partie_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Partie $partie, PartieRepository $partieRepository): Response
     {
-        $form = $this->createForm(Partie1Type::class, $partie);
+        $form = $this->createForm(PartieType::class, $partie);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

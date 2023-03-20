@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Aventure;
-use App\Form\Aventure1Type;
+use App\Form\AventureType;
 use App\Repository\AventureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +25,7 @@ class AventureController extends AbstractController
     public function new(Request $request, AventureRepository $aventureRepository): Response
     {
         $aventure = new Aventure();
-        $form = $this->createForm(Aventure1Type::class, $aventure);
+        $form = $this->createForm(AventureType::class, $aventure);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +51,7 @@ class AventureController extends AbstractController
     #[Route('/{id}/edit', name: 'app_aventure_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Aventure $aventure, AventureRepository $aventureRepository): Response
     {
-        $form = $this->createForm(Aventure1Type::class, $aventure);
+        $form = $this->createForm(AventureType::class, $aventure);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

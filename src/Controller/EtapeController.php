@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Etape;
-use App\Form\Etape1Type;
+use App\Form\EtapeType;
 use App\Repository\EtapeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +25,7 @@ class EtapeController extends AbstractController
     public function new(Request $request, EtapeRepository $etapeRepository): Response
     {
         $etape = new Etape();
-        $form = $this->createForm(Etape1Type::class, $etape);
+        $form = $this->createForm(EtapeType::class, $etape);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +51,7 @@ class EtapeController extends AbstractController
     #[Route('/{id}/edit', name: 'app_etape_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Etape $etape, EtapeRepository $etapeRepository): Response
     {
-        $form = $this->createForm(Etape1Type::class, $etape);
+        $form = $this->createForm(EtapeType::class, $etape);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

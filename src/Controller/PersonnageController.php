@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Personnage;
-use App\Form\Personnage1Type;
+use App\Form\PersonnageType;
 use App\Repository\PersonnageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +25,7 @@ class PersonnageController extends AbstractController
     public function new(Request $request, PersonnageRepository $personnageRepository): Response
     {
         $personnage = new Personnage();
-        $form = $this->createForm(Personnage1Type::class, $personnage);
+        $form = $this->createForm(PersonnageType::class, $personnage);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +51,7 @@ class PersonnageController extends AbstractController
     #[Route('/{id}/edit', name: 'app_personnage_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Personnage $personnage, PersonnageRepository $personnageRepository): Response
     {
-        $form = $this->createForm(Personnage1Type::class, $personnage);
+        $form = $this->createForm(PersonnageType::class, $personnage);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

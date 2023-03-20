@@ -13,6 +13,7 @@ class PersonnageType extends AbstractType
     {
         $builder
             ->add('prenom')
+            ->add('nom')
             ->add('avatar')
         ;
     }
